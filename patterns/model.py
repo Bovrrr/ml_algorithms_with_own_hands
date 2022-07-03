@@ -8,24 +8,18 @@ import pandas as pd
 from typing import Optional, Union
 
 
-class Model(ABC):
+class ModelBase:
     def __init__(self) -> None:
-        super().__init__()
+        pass
 
-    @abstractclassmethod
     def fit(
         self,
-    ) -> Model:
+    ) -> ModelBase:
         raise NotImplementedError
 
-    @abstractclassmethod
-    def predict(self, X: Union(np.ndarray, pd.core.frame.DataFrame)):
+    def predict(self, X: Union[np.ndarray, pd.core.frame.DataFrame]):
         raise NotImplementedError
 
-    # @abstractclassmethod
-    # def predict_proba(self):
-    #     raise NotImplementedError
-
-    def fit_predict(self, X: Union(np.ndarray, pd.core.frame.DataFrame)):
+    def fit_predict(self, X: Union[np.ndarray, pd.core.frame.DataFrame]):
         self.fit()
         self.predict()
